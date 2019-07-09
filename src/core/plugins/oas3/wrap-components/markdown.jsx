@@ -1,13 +1,13 @@
 import React from "react"
 import PropTypes from "prop-types"
 import cx from "classnames"
-import Remarkable from "remarkable"
+import MarkdownIt from "markdown-it"
 import { OAS3ComponentWrapFactory } from "../helpers"
 import { sanitizer } from "core/components/providers/markdown"
 
-const parser = new Remarkable("commonmark")
-parser.block.ruler.enable(["table"])
-parser.set({ linkTarget: "_blank" })
+const parser = new MarkdownIt({ linkTarget: "_blank" })
+// parser.block.ruler.enable(["table"])
+// parser.set({ linkTarget: "_blank" })
 
 export const Markdown = ({ source, className = "" }) => {
   if(typeof source !== "string") {

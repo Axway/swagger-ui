@@ -1,8 +1,8 @@
 {
-  "name": "swagger-ui",
+  "name": "@axway/swagger-ui",
   "version": "3.23.0",
   "main": "dist/swagger-ui.js",
-  "repository": "git@github.com:swagger-api/swagger-ui.git",
+  "repository": "git@github.com:Axway/swagger-ui.git",
   "contributors": [
     "(in alphabetical order)",
     "Anna Bodnia <anna.bodnia@gmail.com>",
@@ -60,6 +60,7 @@
     "immutable": "^3.x.x",
     "js-file-download": "^0.4.1",
     "lodash": "^4.17.11",
+    "markdown-it": "^9.0.0",
     "memoizee": "^0.4.12",
     "prop-types": "^15.5.10",
     "react": "^15.6.2",
@@ -72,7 +73,6 @@
     "react-redux": "^4.x.x",
     "redux": "^3.x.x",
     "redux-immutable": "3.0.8",
-    "remarkable": "^1.7.1",
     "reselect": "^2.5.4",
     "serialize-error": "^2.1.0",
     "swagger-client": "^3.9.0",

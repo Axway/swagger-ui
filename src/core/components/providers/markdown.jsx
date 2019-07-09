@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Remarkable from "remarkable"
+import MarkdownIt from "markdown-it"
 import DomPurify from "dompurify"
 import cx from "classnames"
 
@@ -31,7 +31,7 @@ function Markdown({ source, className = "" }) {
       </div>
     }
 
-    const md = new Remarkable({
+    const md = new MarkdownIt({
         html: true,
         typographer: true,
         breaks: true,
@@ -39,7 +39,7 @@ function Markdown({ source, className = "" }) {
         linkTarget: "_blank"
     })
     
-    md.core.ruler.disable(["replacements", "smartquotes"])
+    // md.core.ruler.disable(["replacements", "smartquotes"])
 
     const html = md.render(source)
     const sanitized = sanitizer(html)
