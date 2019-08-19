@@ -10,7 +10,7 @@ const getExampleComponent = ( sampleResponse, HighlightCode ) => {
     sampleResponse !== undefined &&
     sampleResponse !== null
   ) { return <div>
-      <HighlightCode className="example" value={ sampleResponse } />
+      <HighlightCode className="example" value={ stringify(sampleResponse) } />
     </div>
   }
   return null
@@ -109,7 +109,7 @@ export default class Response extends React.Component {
 
     // Goal: find a schema value for `schema`
     if(isOAS3) {
-      const oas3SchemaForContentType = activeMediaType.get("schema", Map({}))
+      const oas3SchemaForContentType = activeMediaType.get("schema")
 
       schema = oas3SchemaForContentType ? inferSchema(oas3SchemaForContentType.toJS()) : null
       specPathWithPossibleSchema = oas3SchemaForContentType ? List(["content", this.state.responseContentType, "schema"]) : specPath
@@ -136,10 +136,18 @@ export default class Response extends React.Component {
         })
       }
     } else {
-      sampleResponse = schema ? getSampleSchema(schema.toJS(), activeContentType, {
-        includeReadOnly: true,
-        includeWriteOnly: true // writeOnly has no filtering effect in swagger 2.0
-       }) : null
+      if(response.getIn(["examples", activeContentType])) {
+        sampleResponse = response.getIn(["examples", activeContentType])
+      } else {
+        sampleResponse = schema ? getSampleSchema(
+          schema.toJS(), 
+          activeContentType, 
+          {
+            includeReadOnly: true,
+            includeWriteOnly: true // writeOnly has no filtering effect in swagger 2.0
+          }
+        ) : null
+      }
     }
 
     let example = getExampleComponent( sampleResponse, HighlightCode )
