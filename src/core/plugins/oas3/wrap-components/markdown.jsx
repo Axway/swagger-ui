@@ -1,11 +1,12 @@
 import React from "react"
 import PropTypes from "prop-types"
 import cx from "classnames"
-import Remarkable from "remarkable"
+import { Remarkable } from "remarkable"
+import { linkify } from "remarkable/linkify"
 import { OAS3ComponentWrapFactory } from "../helpers"
 import { sanitizer } from "core/components/providers/markdown"
 
-const parser = new Remarkable("commonmark")
+const parser = new Remarkable("commonmark").use(linkify)
 parser.block.ruler.enable(["table"])
 parser.set({ linkTarget: "_blank" })
 
