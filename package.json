@@ -1,8 +1,8 @@
 {
-  "name": "swagger-ui",
+  "name": "@axway/swagger-ui",
   "version": "3.23.6",
   "main": "dist/swagger-ui.js",
-  "repository": "git@github.com:swagger-api/swagger-ui.git",
+  "repository": "git@github.com:Axway/swagger-ui.git",
   "contributors": [
     "(in alphabetical order)",
     "Anna Bodnia <anna.bodnia@gmail.com>",
