@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Remarkable from "remarkable"
+import { Remarkable } from "remarkable"
+import { linkify } from "remarkable/linkify"
 import DomPurify from "dompurify"
 import cx from "classnames"
 
@@ -24,9 +25,8 @@ function Markdown({ source, className = "" }) {
         html: true,
         typographer: true,
         breaks: true,
-        linkify: true,
         linkTarget: "_blank"
-    })
+    }).use(linkify)
     
     md.core.ruler.disable(["replacements", "smartquotes"])
 
